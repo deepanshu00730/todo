@@ -75,7 +75,7 @@ passport.serializeUser(function(user, cb) {
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/secrets",
+    callbackURL: "https://todo-a8yi.onrender.com/auth/google/secrets",
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
 },
     function (accessToken, refreshToken, profile, cb) {
@@ -185,4 +185,5 @@ app.post("/login", function (req, res) {
 const port = process.env.PORT || 3000
 app.listen(port, function () {
     console.log("Active on port 3000");
+    console.log(process.env)
 });
