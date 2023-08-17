@@ -71,11 +71,12 @@ passport.serializeUser(function(user, cb) {
     });
   });
 
+const external_url = process.env.RENDER_EXTERNAL_URL || "http:localhost:3000"
 
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "https://todo-a8yi.onrender.com/auth/google/secrets",
+    callbackURL: `${external_url}/auth/google/secrets`,
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
 },
     function (accessToken, refreshToken, profile, cb) {
